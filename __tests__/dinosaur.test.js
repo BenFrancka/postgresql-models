@@ -12,7 +12,7 @@ describe('dinosaur routes', () => {
     const utahRaptor = {
       species: 'utahraptor',
       diet: 'carnivore',
-      period: 'cretaceous'
+      timePeriod: 'cretaceous'
     };
     const res = await request(app)
       .post('.api/v1/dinosaurs')

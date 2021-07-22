@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS dinosaurs;
+
+CREATE TABLE dinosaurs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    species TEXT NOT NULL,
+    diet TEXT NOT NULL,
+    time_period TEXT NOT NULL
+);
