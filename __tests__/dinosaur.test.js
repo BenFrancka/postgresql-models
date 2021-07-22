@@ -7,4 +7,21 @@ describe('dinosaur routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
+
+  it('creates a dinosaur using POST', async () => {
+    const utahRaptor = {
+      species: 'utahraptor',
+      diet: 'carnivore',
+      period: 'cretaceous'
+    };
+    const res = await request(app)
+      .post('.api/v1/dinosaurs')
+      .send(utahRaptor);
+
+    expect(res.body).toEqual({
+      id: '1',
+      ...utahRaptor
+    });
+  });
+
 });
