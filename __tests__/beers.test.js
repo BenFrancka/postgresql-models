@@ -58,5 +58,18 @@ describe('beer routes', () => {
     expect(res.body).toEqual({ ...pilsnerUrquell, nationality: 'czech' });
   });
 
+  it('deletes a beer by id with DELETE', async () => {
+    const pilsnerUrquell = await Beer.insert({ beerName: 'pilsner urquell', nationality: 'czech republic', variety: 'pilsner', alcoholPercentage: 4 });
+
+    const res = await request(app)
+      .delete(`/api/v1/beers/${pilsnerUrquell.id}`);
+      
+      
+    
+    expect(res.body).toEqual({
+      message: `everything in moderation: ${pilsnerUrquell.beerName} has been deleted`
+    });
+  });
+
 
 });
