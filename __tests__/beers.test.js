@@ -33,5 +33,19 @@ describe('beer routes', () => {
     expect(res.body).toEqual(pilsnerUrquell);
   });
 
+  it('gets all beers with GET', async () => {
+    const pilsnerUrquell = await Beer.insert({ beerName: 'pilsner urquell', nationality: 'czech republic', variety: 'pilsner', alcoholPercentage: 4 });
+
+    const guiness = await Beer.insert({ beerName: 'guiness', nationality: 'ireland', variety: 'stout', alcoholPercentage: 4 });
+
+    const oldRasputin = await Beer.insert({ beerName: 'old rasputin imperial stout', nationality: 'russia', variety: 'stout', alcoholPercentage: 9 });
+
+    const res = await request(app)
+      .get('/api/v1/beers');
+      
+    
+    expect(res.body).toEqual([pilsnerUrquell, guiness, oldRasputin]);
+  });
+
 
 });
