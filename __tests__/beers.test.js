@@ -47,5 +47,16 @@ describe('beer routes', () => {
     expect(res.body).toEqual([pilsnerUrquell, guiness, oldRasputin]);
   });
 
+  it('updates a beer by id with PUT', async () => {
+    const pilsnerUrquell = await Beer.insert({ beerName: 'pilsner urquell', nationality: 'czech republic', variety: 'pilsner', alcoholPercentage: 4 });
+
+    const res = await request(app)
+      .put(`/api/v1/beers/${pilsnerUrquell.id}`)
+      .send({ nationality: 'czech' });
+      
+    
+    expect(res.body).toEqual({ ...pilsnerUrquell, nationality: 'czech' });
+  });
+
 
 });
