@@ -16,3 +16,13 @@ CREATE TABLE relatives (
     number_of_siblings INTEGER NOT NULL,
     age INTEGER NOT NULL
 );
+
+DROP TABLE IF EXISTS beers;
+
+CREATE TABLE beers (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    beer_name TEXT NOT NULL,
+    nationality TEXT NOT NULL,
+    variety TEXT NOT NULL,
+    alcohol_percentage INTEGER NOT NULL
+);
