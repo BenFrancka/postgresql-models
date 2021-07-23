@@ -33,6 +33,22 @@ describe('game routes', () => {
     
     expect(res.body).toEqual(massEffect);
   });
+
+  it('gets all games with GET', async () => {
+    const massEffect = await Game.insert({ title: 'mass effect', gameSystem: 'xbox', genre: 'rpg' });
+
+    const breathOfTheWild = await Game.insert({ title: 'the legend of zelda: breath of the wild', gameSystem: 'nintendo switch', genre: 'rpg' });
+
+    const myst = await Game.insert({ title: 'myst', gameSystem: 'pc', genre: 'puzzle' });
+
+    
+
+    const res = await request(app)
+      .get('/api/v1/games');
+      
+    
+    expect(res.body).toEqual([massEffect, breathOfTheWild, myst]);
+  });
   
 
 });
