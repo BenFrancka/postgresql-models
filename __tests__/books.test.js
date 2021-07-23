@@ -34,4 +34,20 @@ describe('book routes', () => {
     expect(res.body).toEqual(neuromancer);
   });
 
+  it('gets all books with GET', async () => {
+    const neuromancer = await Book.insert({ title: 'neuromancer', authorName: 'william gibson', pageCount: 271 });
+
+    const leviathanWakes = await Book.insert({ title: 'leviathan wakes', authorName: 'james s.a. corey', pageCount: 561 });
+
+    const theHobbit = await Book.insert({ title: 'the hobbit', authorName: 'j.r.r. tolkien', pageCount: 310 });
+
+    
+
+    const res = await request(app)
+      .get('/api/v1/books');
+      
+    
+    expect(res.body).toEqual([neuromancer, leviathanWakes, theHobbit]);
+  });
+
 });
