@@ -35,3 +35,12 @@ CREATE TABLE books (
     author_name TEXT NOT NULL,
     page_count INTEGER NOT NULL
 );
+
+DROP TABLE IF EXISTS games;
+
+CREATE TABLE games (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title TEXT NOT NULL,
+    game_system TEXT NOT NULL,
+    genre TEXT NOT NULL
+);
