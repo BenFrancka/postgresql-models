@@ -61,4 +61,17 @@ describe('book routes', () => {
     expect(res.body).toEqual({ ...neuromancer, title: 'mona lisa overdrive' });
   });
 
+  it('deletes a book by id with DELETE', async () => {
+    const neuromancer = await Book.insert({ title: 'neuromancer', authorName: 'william gibson', pageCount: 271 });
+
+    const res = await request(app)
+      .delete(`/api/v1/books/${neuromancer.id}`);
+      
+      
+    
+    expect(res.body).toEqual({
+      message: `you should really keep track of your books: ${neuromancer.title} has been deleted`
+    });
+  });
+
 });
