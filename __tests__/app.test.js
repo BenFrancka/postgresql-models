@@ -60,4 +60,17 @@ describe('dinosaur routes', () => {
     expect(res.body).toEqual([utahRaptor, corythosaurus, spinosaurus]);
   });
 
+  it('updates a dinosaur by id using PUT', async () => {
+    const utahRaptor = await Dinosaur.insert({
+      species: 'utahraptor',
+      diet: 'carnivore',
+      timePeriod: 'cretaceous'
+    });
+    const res = await request(app)
+      .put(`/api/v1/dinosaurs/${utahRaptor.id}`)
+      .send({ timePeriod: 'upper cretaceous' });
+      
+
+    expect(res.body).toEqual({ ...utahRaptor, timePeriod: 'upper cretaceous' });
+  });
 }); 
