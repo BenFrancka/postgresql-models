@@ -80,6 +80,24 @@ describe('relatives routes', () => {
     expect(res.body).toEqual({ ...ruth, age: 95 });
   });
 
+  it('deletes a relative by id with DELETE', async () => {
+    const ruth = await Relative.insert({
+      firstName: 'ruth',
+      relation: 'grandmother',
+      numberOfSiblings: 3,
+      age: 94
+    });
+
+    const res = await request(app)
+      .delete(`/api/v1/relatives/${ruth.id}`);
+      
+      
+
+    expect(res.body).toEqual({
+      message: `you should call more often, ${ruth.name} was deleted!`
+    });
+  });
+
 
 
 });
