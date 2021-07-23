@@ -73,4 +73,16 @@ describe('dinosaur routes', () => {
 
     expect(res.body).toEqual({ ...utahRaptor, timePeriod: 'upper cretaceous' });
   });
+
+  it('deletes a dinosaur by id using DELETE', async () => {
+    const utahRaptor = await Dinosaur.insert({
+      species: 'utahraptor',
+      diet: 'carnivore',
+      timePeriod: 'cretaceous'
+    });
+    const res = await request(app)
+      .delete(`/api/v1/dinosaurs/${utahRaptor.id}`);
+      
+    expect(res.body).toEqual(`too late, the asteroid hit and ${utahRaptor.species} is gone forever`);
+  });
 }); 
