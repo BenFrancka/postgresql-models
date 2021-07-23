@@ -94,7 +94,7 @@ describe('relatives routes', () => {
       
 
     expect(res.body).toEqual({
-      message: `you should call more often, ${ruth.name} was deleted!`
+      message: `you should call more often, ${ruth.firstName} was deleted!`
     });
   });
 
