@@ -23,6 +23,16 @@ describe('game routes', () => {
       ...massEffect
     });
   });
+
+  it('gets a game by id with GET', async () => {
+    const massEffect = await Game.insert({ title: 'mass effect', gameSystem: 'xbox', genre: 'rpg' });
+
+    const res = await request(app)
+      .get(`/api/v1/games/${massEffect.id}`);
+      
+    
+    expect(res.body).toEqual(massEffect);
+  });
   
 
 });
