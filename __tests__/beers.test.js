@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Beer from '../lib/models/Beer.js';
 //import Beer from '../lib/models/Beer.js';
 
 describe('beer routes', () => {
@@ -22,6 +23,15 @@ describe('beer routes', () => {
     });
   });
 
+  it('gets a beer by id with GET', async () => {
+    const pilsnerUrquell = await Beer.insert({ beerName: 'pilsner urquell', nationality: 'czech republic', variety: 'pilsner', alcoholPercentage: 4 });
+
+    const res = await request(app)
+      .get(`/api/v1/beers/${pilsnerUrquell.id}`);
+      
+    
+    expect(res.body).toEqual(pilsnerUrquell);
+  });
 
 
 });
