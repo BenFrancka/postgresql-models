@@ -49,6 +49,17 @@ describe('game routes', () => {
     
     expect(res.body).toEqual([massEffect, breathOfTheWild, myst]);
   });
+
+  it('updates a game by id with PUT', async () => {
+    const massEffect = await Game.insert({ title: 'mass effect', gameSystem: 'xbox', genre: 'rpg' });
+
+    const res = await request(app)
+      .put(`/api/v1/games/${massEffect.id}`)
+      .send({ title: 'mass effect legendary edition', gameSystem: 'ps4' });
+      
+    
+    expect(res.body).toEqual({ ...massEffect, title: 'mass effect legendary edition', gameSystem: 'ps4' });
+  });
   
 
 });
