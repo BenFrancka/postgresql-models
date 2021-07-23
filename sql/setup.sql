@@ -26,3 +26,12 @@ CREATE TABLE beers (
     variety TEXT NOT NULL,
     alcohol_percentage INTEGER NOT NULL
 );
+
+DROP TABLE IF EXISTS books;
+
+CREATE TABLE books (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title TEXT NOT NULL,
+    author_name TEXT NOT NULL,
+    page_count INTEGER NOT NULL
+);

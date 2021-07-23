@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 import Beer from '../lib/models/Beer.js';
-//import Beer from '../lib/models/Beer.js';
+
 
 describe('beer routes', () => {
   beforeEach(() => {
