@@ -50,4 +50,15 @@ describe('book routes', () => {
     expect(res.body).toEqual([neuromancer, leviathanWakes, theHobbit]);
   });
 
+  it('updates a book by id with PUT', async () => {
+    const neuromancer = await Book.insert({ title: 'neuromancer', authorName: 'william gibson', pageCount: 271 });
+
+    const res = await request(app)
+      .put(`/api/v1/books/${neuromancer.id}`)
+      .send({ title: 'mona lisa overdrive' });
+      
+    
+    expect(res.body).toEqual({ ...neuromancer, title: 'mona lisa overdrive' });
+  });
+
 });
