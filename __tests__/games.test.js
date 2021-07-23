@@ -60,6 +60,19 @@ describe('game routes', () => {
     
     expect(res.body).toEqual({ ...massEffect, title: 'mass effect legendary edition', gameSystem: 'ps4' });
   });
+
+  it('deletes a game by id with DELETE', async () => {
+    const massEffect = await Game.insert({ title: 'mass effect', gameSystem: 'xbox', genre: 'rpg' });
+
+    const res = await request(app)
+      .delete(`/api/v1/games/${massEffect.id}`);
+      
+      
+    
+    expect(res.body).toEqual({
+      message: `Game over: ${massEffect.title} has been deleted`
+    });
+  });
   
 
 });
