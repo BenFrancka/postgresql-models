@@ -12,7 +12,7 @@ describe('game routes', () => {
   });
 
   it('creates a game with POST', async () => {
-    const massEffect = { title: 'mass effect', gameSystem: 'x box', genre: 'rpg' };
+    const massEffect = { title: 'mass effect', gameSystem: 'xbox', genre: 'rpg' };
 
     const res = await request(app)
       .post('/api/v1/games')
