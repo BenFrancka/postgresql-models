@@ -9,7 +9,18 @@ describe('relatives routes', () => {
     return setup(pool);
   });
 
-  
+  it('creates a relative with POST', async () => {
+    const ruth = { firstName: 'ruth', relation: 'grandmother', numberOfSiblings: 3, age: 94 };
+
+    const res = await request(app)
+      .post('/api/v1/relatives')
+      .send(ruth);
+
+    expect(res.body).toEqual({
+      id: '1',
+      ...ruth
+    });
+  });
 
 
 
