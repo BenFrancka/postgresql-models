@@ -16,7 +16,10 @@ describe('beer routes', () => {
       .post('/api/v1/beers')
       .send(pilsnerUrquell);
     
-    expect(res.body).toEqual(pilsnerUrquell);
+    expect(res.body).toEqual({
+      id: '1',
+      ...pilsnerUrquell
+    });
   });
 
 
