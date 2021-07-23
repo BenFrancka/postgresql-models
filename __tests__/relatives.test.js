@@ -64,7 +64,21 @@ describe('relatives routes', () => {
     expect(res.body).toEqual([ruth, martha, sarah]);
   });
 
+  it('updates a relative by id with PUT', async () => {
+    const ruth = await Relative.insert({
+      firstName: 'ruth',
+      relation: 'grandmother',
+      numberOfSiblings: 3,
+      age: 94
+    });
 
+    const res = await request(app)
+      .put(`/api/v1/relatives/${ruth.id}`)
+      .send({ age: 95 });
+      
+
+    expect(res.body).toEqual({ ...ruth, age: 95 });
+  });
 
 
 
