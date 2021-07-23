@@ -83,6 +83,6 @@ describe('dinosaur routes', () => {
     const res = await request(app)
       .delete(`/api/v1/dinosaurs/${utahRaptor.id}`);
       
-    expect(res.body).toEqual(`too late, the asteroid hit and ${utahRaptor.species} is gone forever`);
+    expect(res.body).toEqual({ message: `too late, the asteroid hit and ${utahRaptor.species} is gone forever` });
   });
 }); 
