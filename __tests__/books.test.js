@@ -5,7 +5,7 @@ import app from '../lib/app.js';
 //import Book from '../lib/models/Book.js';
 
 
-describe('beer routes', () => {
+describe('book routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
